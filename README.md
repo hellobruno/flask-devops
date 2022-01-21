@@ -39,13 +39,13 @@ terraform {
 terraform init
 ```
 
-* Plan a single modification on just a single resource, the Elastic Container Registry so we can work and build the docker image and then push it before applying all changes
+* Plan modifications
 
 ```bash
 terraform plan
 ```
 
-* Plan modifications
+* Apply modifications
 
 ```bash
 terraform apply
@@ -75,7 +75,7 @@ docker tag flask-devops:latest 453194146499.dkr.ecr.eu-west-2.amazonaws.com/flas
 docker push 453194146499.dkr.ecr.eu-west-2.amazonaws.com/flask-devops:latest
 ```
 
-* Apply new changes, the output will be the Load Balancer's hostname.
+* Apply new changes, the output will be the Load Balancer's hostname
 
 ```bash
 terraform apply
@@ -101,11 +101,15 @@ In `ecr.tf` there is:
 In `alb.tf` there is:
   - Application Load Balancer w/ target and security groups and listener. 
 
-In `alb.tf` there is:
+In `network.tf` there is:
   - The provisioning of a VPC with 3 public subnets. 
 
-## Adaptable variables
+## Variables
   - Variables like name & region @ `variables.tf` 
   - `"cluster_name"`
-  - `aws_region`
+  - `"aws_region"`
+
+## End result:
+
+[flask.hellobr.uno](flask.hellobr.uno)
 
